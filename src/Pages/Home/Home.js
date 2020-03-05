@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import shuffle from "lodash.shuffle";
 import Button from "../../components/Button/Button";
 
 const ACCESS_TOKEN = "10222910447016736";
@@ -20,15 +21,33 @@ function Home(props) {
       })
     ).then(response => {
       const characters = response.map(character => {
+        const hints = [];
+        const isMale = character.appearance.gender === "Male";
+        const pronoun = isMale ? "He" : "She";
+
+        if (character.biography["place-of-birth"]) {
+          hints.push(
+            `${pronoun} is born in ${character.biography["place-of-birth"]}.`
+          );
+        }
+
+        if (character.biography.publisher) {
+          hints.push(`The publisher is ${character.biography.publisher}.`);
+        }
+
+        if (character.appearance.race) {
+          hints.push(`${pronoun} is ${character.appearance.race}.`);
+        }
+
         return {
           name: character.name,
           image: character.image.url,
-          alignment: character.biography.alignment
+          alignment: character.biography.alignment,
+          hints
         };
       });
 
-      console.log(characters);
-      setListOfCharacters(characters);
+      setListOfCharacters(shuffle(characters));
       setIsLoading(false);
     });
   }, []);
