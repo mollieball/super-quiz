@@ -1,0 +1,11 @@
+.Score h1 {
+  font-family: Bangers, cursive;
+  font-size: 6em;
+  color: rgb(242, 29, 46);
+}
+
+.Score h2 {
+  font-family: Bangers, cursive;
+  font-size: 3em;
+  color: rgb(3, 119, 165);
+}
