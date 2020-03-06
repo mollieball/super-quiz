@@ -1,0 +1,63 @@
+.Play {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  font-family: Bangers, cursive;
+  background-size: cover;
+  transition: background-image 0.2s ease-in-out;
+}
+
+.Play .box {
+  backdrop-filter: blur(20px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.playCard {
+  background-color: white;
+}
+
+.playCard .hints {
+  list-style: none;
+  font-size: 24px;
+  margin: 0;
+  padding: 0;
+}
+
+.playCard h1 {
+  text-align: center;
+}
+
+.timer {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.get-ready h1,
+.get-ready h2 {
+  font-size: 5.8rem;
+}
+
+.playCard {
+  border: 5px solid black;
+  margin-left: 250px;
+  margin-right: 250px;
+  padding: 20px;
+}
+
+.boom {
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  right: 30%;
+  bottom: 30%;
+}

@@ -5,7 +5,7 @@ import "./HeroDetails.css";
 function HeroDetails({ name, image, isCrossed, imageStyle }) {
   return (
     <div className="HeroDetails">
-      <h1 classname="super-hero-name">{name}</h1>
+      <h1 className="super-hero-name">{name}</h1>
       <Image
         src={image}
         alt={name}
