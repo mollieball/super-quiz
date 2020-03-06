@@ -9,3 +9,8 @@
   font-size: 3em;
   color: rgb(3, 119, 165);
 }
+
+.Score {
+  align-items: center;
+  text-align: center;
+}
