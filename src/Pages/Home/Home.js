@@ -8,7 +8,41 @@ import HomeMusic from "../../../src/static/home-music.mp3";
 import "./Home.css";
 
 const ACCESS_TOKEN = "10222910447016736";
-const CHARACTERS_IDS = [299, 309, 370, 374, 405, 38, 63, 69, 106, 149];
+const CHARACTERS_IDS = [
+  299,
+  309,
+  370,
+  374,
+  405,
+  414,
+
+  // 423,
+  // 480,
+  // 522,
+  // 530,
+  // 558,
+  // 570,
+  // 655,
+  // 687,
+  // 606,
+
+  38,
+  63,
+  69,
+  106,
+  149,
+  157
+
+  // 226,
+  // 241,
+  // 263,
+  // 317,
+  // 332,
+  // 527,
+  // 567,
+  // 644,
+  // 717
+];
 
 function Home(props) {
   const [isLoading, setIsLoading] = useState(true);
@@ -43,17 +77,17 @@ function Home(props) {
           character.appearance.gender === "Male";
         const pronoun = isMale ? "He" : "She";
 
-        if (character.biography["place-of-birth"]) {
+        if (character.biography && character.biography["place-of-birth"]) {
           hints.push(
             `${pronoun} is born in ${character.biography["place-of-birth"]}.`
           );
         }
 
-        if (character.biography.publisher) {
+        if (character.biography && character.biography.publisher) {
           hints.push(`The publisher is ${character.biography.publisher}.`);
         }
 
-        if (character.appearance.race) {
+        if (character.appearance && character.appearance.race) {
           hints.push(`${pronoun} is ${character.appearance.race}.`);
         }
 

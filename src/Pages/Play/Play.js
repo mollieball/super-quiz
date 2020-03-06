@@ -13,7 +13,7 @@ function Play({ location, history, ...props }) {
   const [charIndex, setCharIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [answers, setAnswers] = useState([]);
-  const [remainingSeconds, setRemainingSeconds] = useState(3);
+  const [remainingSeconds, setRemainingSeconds] = useState(60);
 
   useEffect(() => {
     const audio = new Audio(PlayMusic);

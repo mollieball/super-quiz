@@ -1,5 +1,33 @@
 .ScorePage {
+  display: flex;
+  align-items: center;
+  background-color: black;
+}
+
+.ScorePage::before {
+  content: " ";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background: url(/dots-background.png);
+  background-size: cover;
+  background-position: center;
+  background-color: rgb(242, 206, 26);
+}
+
+.ScorePage .score {
+  background-color: rgb(236, 236, 236);
+  border: 5px solid black;
+  display: inline-block;
+  z-index: 1;
 }
 
 .ScorePage .slider {
+  background-color: white;
+  width: 90%;
+  border: 5px solid black;
+  z-index: 1;
 }

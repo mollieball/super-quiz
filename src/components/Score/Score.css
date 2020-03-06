@@ -1,16 +1,21 @@
 .Score h1 {
   font-family: Bangers, cursive;
   font-size: 6em;
-  color: rgb(242, 29, 46);
+  color: black;
 }
 
 .Score h2 {
   font-family: Bangers, cursive;
   font-size: 3em;
-  color: rgb(3, 119, 165);
+  color: rgb(242, 29, 46);
 }
 
 .Score {
   align-items: center;
   text-align: center;
+}
+
+.Score img {
+  border: 5px solid black;
+  padding-top: 0;
 }
