@@ -1,19 +1,17 @@
 import React, { useEffect } from "react";
 import Applause from "../../../src/static/Applause.mp3";
-import Sigh from "../../../src/static/Sigh.mp3";
 import "./Score.css";
 
 function Score({ score }) {
   useEffect(() => {
-    let audio;
+    if (score != 0) {
+      const audio = new Audio(Applause);
+      audio.play();
 
-    if (score === 0) {
-      audio = new Audio(Sigh);
-    } else {
-      audio = new Audio(Applause);
+      setTimeout(() => {
+        audio.pause();
+      }, 10000);
     }
-
-    audio.play();
   }, [score]);
 
   return (
@@ -21,7 +19,7 @@ function Score({ score }) {
       {score > 0 ? (
         <div>
           <img src="https://media.giphy.com/media/3osxYp14leBym7WiVa/giphy.gif" />
-          <h1> "Well Done !"</h1>
+          <h1>"Well Done !"</h1>
         </div>
       ) : (
         <div>
