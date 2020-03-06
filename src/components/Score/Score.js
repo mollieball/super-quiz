@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import Applause from "../../../src/static/Applause.mp3";
 import Sigh from "../../../src/static/Sigh.mp3";
-import Cheering from "../../../src/static/Cheering.gif";
-import Consoling from "../../../src/static/Consoling.gif";
 import "./Score.css";
 
 function Score({ score }) {
