@@ -4,6 +4,7 @@ import shuffle from "lodash.shuffle";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Button from "../../components/Button/Button";
+import HomeMusic from "../../../src/static/home-music.mp3";
 import "./Home.css";
 
 const ACCESS_TOKEN = "10222910447016736";
@@ -11,7 +12,18 @@ const CHARACTERS_IDS = [299, 309, 370, 374, 405, 38, 63, 69, 106, 149];
 
 function Home(props) {
   const [isLoading, setIsLoading] = useState(true);
+  const [isShowingStart, setIsShowingStart] = useState(false);
   const [listOfCharacters, setListOfCharacters] = useState([]);
+
+  useEffect(() => {
+    if (isLoading || isShowingStart) {
+      return;
+    }
+
+    const audio = new Audio(HomeMusic);
+    audio.play();
+    return () => audio.pause();
+  }, [isLoading, isShowingStart]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -25,7 +37,10 @@ function Home(props) {
     ).then(response => {
       const characters = response.map(character => {
         const hints = [];
-        const isMale = character.appearance.gender === "Male";
+        const isMale =
+          character &&
+          character.appearance &&
+          character.appearance.gender === "Male";
         const pronoun = isMale ? "He" : "She";
 
         if (character.biography["place-of-birth"]) {
@@ -51,6 +66,7 @@ function Home(props) {
       });
 
       setListOfCharacters(shuffle(characters));
+      setIsShowingStart(true);
       setIsLoading(false);
     });
   }, []);
@@ -61,6 +77,14 @@ function Home(props) {
         <Row className="justify-content-center align-items-center">
           {isLoading ? (
             <h1>Brace yourselves, superheroes coming!</h1>
+          ) : isShowingStart ? (
+            <Button
+              backgroundColor="rgb(3, 191, 85)"
+              color="white"
+              onClick={() => setIsShowingStart(false)}
+            >
+              Press to Start
+            </Button>
           ) : (
             <>
               <h1 className="animated zoomIn faster">Super Head's Up!</h1>
