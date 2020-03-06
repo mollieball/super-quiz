@@ -60,4 +60,5 @@
   left: 30%;
   right: 30%;
   bottom: 30%;
+  z-index: 9000;
 }

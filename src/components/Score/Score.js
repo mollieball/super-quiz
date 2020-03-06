@@ -18,16 +18,16 @@ function Score({ score }) {
     <div className="Score">
       {score > 0 ? (
         <div>
+          <h1>Well Done!</h1>
           <img src="https://media.giphy.com/media/3osxYp14leBym7WiVa/giphy.gif" />
-          <h1>"Well Done !"</h1>
         </div>
       ) : (
         <div>
+          <h1>Try Again!</h1>
           <img src="https://media.giphy.com/media/ejE4qMgkF3B7hvI9RX/giphy.gif" />
-          <h1>"Try Again !"</h1>
         </div>
       )}
-      <h2>Your Total Score is {score}</h2>
+      <h2 className="mt-3">Your Total Score is {score}</h2>
     </div>
   );
 }
