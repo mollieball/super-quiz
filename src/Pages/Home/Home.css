@@ -1,0 +1,88 @@
+.Home {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-image: url("/background.jpg");
+  background-repeat: repeat;
+  animation: scrollBad 120s linear infinite;
+}
+
+@keyframes scrollBad {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px -10000px;
+  }
+}
+
+.Home::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 0;
+}
+
+.Home .container {
+  z-index: 2;
+}
+
+.Home h1 {
+  font-family: Bangers, cursive;
+  font-size: 5.8rem;
+  color: white;
+}
+
+.Home h2 {
+  font-family: Bangers, cursive;
+  color: rgb(255, 255, 255);
+}
+
+.Home .instructions {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+}
+
+.Home .instructions .step {
+  flex: 1;
+  border: 5px solid black;
+  text-align: center;
+  border-right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: rgb(255, 255, 255);
+}
+
+.Home .step.background-one {
+  background-image: url("/mini-background.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.Home .step.background-two {
+  background-image: url("/mini-background-two.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.Home .step.background-three {
+  background-image: url("/mini-background-three.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.Home .instructions .step:last-child {
+  border-right: 5px solid black;
+}

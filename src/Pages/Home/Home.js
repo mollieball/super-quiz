@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import shuffle from "lodash.shuffle";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 import Button from "../../components/Button/Button";
+import "./Home.css";
 
 const ACCESS_TOKEN = "10222910447016736";
 const CHARACTERS_IDS = [299, 309, 370, 374, 405, 38, 63, 69, 106, 149];
@@ -52,65 +55,92 @@ function Home(props) {
     });
   }, []);
 
-  if (isLoading) {
-    return "Brace yourselves, superheroes coming!!";
-  }
-
   return (
     <div className="Home">
-      <div className="hometitle">
-        <h1>Welcome to SuperQuiz!</h1>
-      </div>
+      <Container>
+        <Row className="justify-content-center align-items-center">
+          {isLoading ? (
+            <h1>Brace yourselves, superheroes coming!</h1>
+          ) : (
+            <>
+              <h1 className="animated zoomIn faster">Super Head's Up!</h1>
 
-      <div className="instructionstitle">
-        <h2>Instructions:</h2>
-        <p>
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum."
-        </p>
-      </div>
+              <div className="animated delay-3 fadeIn d-flex flex-column justify-content-center align-items-center">
+                <div className="instructions mb-3">
+                  <div className="step p-3 background-one">
+                    <h2>Get Started</h2>
+                    <p>One player guesses, others control the device!</p>
+                  </div>
 
-      <div>
-        <Link
-          to={{
-            pathname: "/play",
-            state: {
-              characters: listOfCharacters.filter(
-                character => character.alignment === "good"
-              )
-            }
-          }}
-        >
-          <Button>Superheroes</Button>
-        </Link>
+                  <div className="step p-3 background-two">
+                    <h2>Guess</h2>
+                    <p>Guess as many characters as you can under a minute!</p>
+                  </div>
 
-        <Link
-          to={{
-            pathname: "/play",
-            state: {
-              characters: listOfCharacters.filter(
-                character => character.alignment === "bad"
-              )
-            }
-          }}
-        >
-          <Button>Villains</Button>
-        </Link>
+                  <div className="step p-3 background-three">
+                    <h2>Hurry!</h2>
+                    <p>Skip if you are not sure of the answer!</p>
+                  </div>
+                </div>
 
-        <Link
-          to={{
-            pathname: "/play",
-            state: { characters: listOfCharacters }
-          }}
-        >
-          <Button>All</Button>
-        </Link>
-      </div>
+                <div>
+                  <Link
+                    to={{
+                      pathname: "/play",
+                      state: {
+                        characters: listOfCharacters.filter(
+                          character => character.alignment === "good"
+                        )
+                      }
+                    }}
+                    className="mr-3"
+                  >
+                    <Button
+                      backgroundColor="rgb(3,191,85)"
+                      color="rgb(255,255,255)"
+                    >
+                      Superheroes
+                    </Button>
+                  </Link>
+
+                  <Link
+                    to={{
+                      pathname: "/play",
+                      state: {
+                        characters: listOfCharacters.filter(
+                          character => character.alignment === "bad"
+                        )
+                      }
+                    }}
+                    className="mr-3"
+                  >
+                    <Button
+                      backgroundColor="rgb(3,119,165)"
+                      color="rgb(255,255,255)"
+                    >
+                      Villains
+                    </Button>
+                  </Link>
+
+                  <Link
+                    to={{
+                      pathname: "/play",
+                      state: { characters: listOfCharacters }
+                    }}
+                  >
+                    <Button
+                      backgroundColor="rgb(230,0,0)"
+                      color="rgb(255,255,255)"
+                    >
+                      All
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </>
+          )}
+        </Row>
+      </Container>
     </div>
   );
 }
