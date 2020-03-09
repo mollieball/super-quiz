@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "react-bootstrap/Image";
-import Button from "../Button/Button";
 import "./HeroDetails.css";
 
 function HeroDetails({ name, image, isCrossed, imageStyle }) {

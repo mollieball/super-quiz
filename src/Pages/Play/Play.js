@@ -16,9 +16,9 @@ function Play({ location, history, ...props }) {
   const [remainingSeconds, setRemainingSeconds] = useState(60);
 
   useEffect(() => {
-    const audio = new Audio(PlayMusic);
-    audio.play();
-    return () => audio.pause();
+    // const audio = new Audio(PlayMusic);
+    // audio.play();
+    // return () => audio.pause();
   }, []);
 
   useEffect(() => {
@@ -66,7 +66,7 @@ function Play({ location, history, ...props }) {
     };
 
     setAnswers([...answers, answer]);
-    setCharIndex(charIndex + 1);
+    setCharIndex((charIndex + 1) % characters.length);
   }
 
   function handleCorrect() {
@@ -77,7 +77,7 @@ function Play({ location, history, ...props }) {
     };
 
     setAnswers([...answers, answer]);
-    setCharIndex(charIndex + 1);
+    setCharIndex((charIndex + 1) % characters.length);
     setScore(score + 1);
   }
 
@@ -124,7 +124,7 @@ function Play({ location, history, ...props }) {
                   <div className="ml-3 d-flex">
                     <ul className="hints align-self-center">
                       {characters[charIndex].hints.map(hint => (
-                        <li>{hint}</li>
+                        <li key={hint}>{hint}</li>
                       ))}
                     </ul>
                   </div>
