@@ -15,33 +15,30 @@ const CHARACTERS_IDS = [
   374,
   405,
   414,
-
-  // 423,
-  // 480,
-  // 522,
-  // 530,
-  // 558,
-  // 570,
-  // 655,
-  // 687,
-  // 606,
-
+  423,
+  480,
+  522,
+  530,
+  558,
+  570,
+  655,
+  687,
+  606,
   38,
   63,
   69,
   106,
   149,
-  157
-
-  // 226,
-  // 241,
-  // 263,
-  // 317,
-  // 332,
-  // 527,
-  // 567,
-  // 644,
-  // 717
+  157,
+  226,
+  241,
+  263,
+  317,
+  332,
+  527,
+  567,
+  644,
+  717
 ];
 
 function Home(props) {
@@ -60,16 +57,25 @@ function Home(props) {
   }, [isLoading, isShowingStart]);
 
   useEffect(() => {
-    setIsLoading(true);
+    async function initCharacters() {
+      setIsLoading(true);
 
-    Promise.all(
-      CHARACTERS_IDS.map(id => {
-        return fetch(
-          `https://www.superheroapi.com/api.php/${ACCESS_TOKEN}/${id}`
-        ).then(response => response.json());
-      })
-    ).then(response => {
-      const characters = response.map(character => {
+      const responses = [];
+      for (const CHARACTER_ID of CHARACTERS_IDS) {
+        await fetch(
+          `https://www.superheroapi.com/api.php/${ACCESS_TOKEN}/${CHARACTER_ID}`
+        )
+          .then(response => response.json())
+          .then(response => {
+            if (response.response === "error") {
+              return;
+            }
+
+            responses.push(response);
+          });
+      }
+
+      const characters = responses.map(character => {
         const hints = [];
         const isMale =
           character &&
@@ -102,7 +108,9 @@ function Home(props) {
       setListOfCharacters(shuffle(characters));
       setIsShowingStart(true);
       setIsLoading(false);
-    });
+    }
+
+    initCharacters();
   }, []);
 
   return (

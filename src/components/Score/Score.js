@@ -4,7 +4,7 @@ import "./Score.css";
 
 function Score({ score }) {
   useEffect(() => {
-    if (score != 0) {
+    if (score !== 0) {
       const audio = new Audio(Applause);
       audio.play();
 
@@ -19,12 +19,18 @@ function Score({ score }) {
       {score > 0 ? (
         <div>
           <h1>Well Done!</h1>
-          <img src="https://media.giphy.com/media/3osxYp14leBym7WiVa/giphy.gif" />
+          <img
+            alt="Victory"
+            src="https://media.giphy.com/media/3osxYp14leBym7WiVa/giphy.gif"
+          />
         </div>
       ) : (
         <div>
           <h1>Try Again!</h1>
-          <img src="https://media.giphy.com/media/ejE4qMgkF3B7hvI9RX/giphy.gif" />
+          <img
+            alt="Try again"
+            src="https://media.giphy.com/media/ejE4qMgkF3B7hvI9RX/giphy.gif"
+          />
         </div>
       )}
       <h2 className="mt-3">Your Total Score is {score}</h2>
